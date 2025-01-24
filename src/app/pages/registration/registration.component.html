@@ -1,0 +1,37 @@
+<div class="h-full max-w-screen flex flex-col items-center justify-center bg-slate-100 mb-7">
+    <div class="bg-white shadow shadow-blue-200 rounded-md w-4/12 flex flex-col justify-center items-center">
+        <form class="flex flex-col w-9/12 my-10" [formGroup]="registrationForm">
+            <div class="flex flex-col">
+                <label for="name" class="mb-1">Name</label>
+                <input id="name" type="text" class="border border-slate-300 rounded h-9 pl-2" formControlName="name">
+                <p class="text-xs text-red-700" *ngIf="name?.touched && name?.hasError('required')">This field is required</p>
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="email" class="mb-1">Email</label>
+                <input id="email" type="email" class="border border-slate-300 rounded h-9 pl-2" formControlName="email">
+                <p class="text-xs text-red-700" *ngIf="email?.touched && email?.hasError('email')">Please enter a valid email address eg: john&#64;doe.com</p>
+                <p class="text-xs text-red-700" *ngIf="email?.touched && email?.hasError('required')">This field is required</p>
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="phonenumber" class="mb-1">Phone Number</label>
+                <input id="phonenumber" type="text" class="border border-slate-300 rounded h-9 pl-2" formControlName="phoneNumber">
+                <p class="text-xs text-red-700" *ngIf="phoneNumber?.touched && phoneNumber?.hasError('pattern')">Please enter a valid 10 digit phone number</p>
+                <p class="text-xs text-red-700" *ngIf="phoneNumber?.touched && phoneNumber?.hasError('required')">This field is required</p>
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="password" class="mb-1">Password</label>
+                <input id="password" type="text" class="border border-slate-300 rounded h-9 pl-2" formControlName="password">
+                <p class="text-xs text-red-700" *ngIf="password?.touched && password?.hasError('pattern')">Please enter a valid password</p>
+                <p class="text-xs text-red-700" *ngIf="password?.touched && password?.hasError('required')">This field is required</p>
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="reenterpassword" class="mb-1">Re-enter Password</label>
+                <input id="reenterpassword" type="text" class="border border-slate-300 rounded h-9 pl-2" formControlName="reEnterPassword">
+                <p class="text-xs text-red-700" *ngIf="reEnterPassword?.touched && !validatePasswords">Passwords don't match</p>
+                <p class="text-xs text-red-700" *ngIf="reEnterPassword?.touched && reEnterPassword?.hasError('required')">This field is required</p>
+            </div>
+            <button class="mt-10 shadow border border-blue-600 bg-blue-600 py-1.5 rounded font-medium text-slate-100 disabled:bg-gray-300 disabled:border-gray-300 disabled:text-slate-400" [disabled]="!registrationForm.valid || !validatePasswords()" (click)="registerUser()">Register</button>
+        </form>
+    </div>
+</div>
+

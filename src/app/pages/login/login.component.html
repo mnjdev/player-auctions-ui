@@ -1,0 +1,15 @@
+<div class="h-full w-screen flex flex-col items-center justify-center bg-slate-100">
+    <div class="bg-white shadow rounded-md w-4/12 flex flex-col justify-center items-center">
+        <form [formGroup]="loginForm" class="flex flex-col w-9/12 my-10">
+            <div class="flex flex-col">
+                <label for="username" class="mb-1">Username</label>
+                <input id="username" type="text" class="border border-slate-300 rounded h-9 pl-2" formControlName="username">
+            </div>
+            <div class="flex flex-col mt-5">
+                <label for="password" class="mb-1">Password</label>
+                <input id="password" type="password" class="border border-slate-300 rounded h-9 pl-2">
+            </div>
+            <button class="mt-10 shadow border border-blue-600 bg-blue-600 py-1.5 rounded text-slate-50 font-medium">Login</button>
+        </form>
+    </div>
+</div>
